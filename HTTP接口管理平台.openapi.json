@@ -1,0 +1,2316 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "HTTP接口管理平台",
+    "description": "",
+    "version": "1.0.0"
+  },
+  "tags": [
+    {
+      "name": "用户模块"
+    },
+    {
+      "name": "项目模块"
+    },
+    {
+      "name": "项目成员模块"
+    },
+    {
+      "name": "接口模块"
+    },
+    {
+      "name": "接口版本管理模块"
+    }
+  ],
+  "paths": {
+    "/user/register": {
+      "post": {
+        "summary": "register",
+        "x-apifox-folder": "用户模块",
+        "x-apifox-status": "released",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "用户模块"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": {
+                    "type": "string",
+                    "example": "wxw"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": "112233"
+                  },
+                  "email": {
+                    "type": "string",
+                    "example": "123456@qq.com"
+                  },
+                  "role": {
+                    "type": "string",
+                    "example": "开发者"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "additionalProperties": false
+                    },
+                    "message": {
+                      "type": "string",
+                      "additionalProperties": false
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "created_at": {
+                          "type": "string",
+                          "additionalProperties": false
+                        },
+                        "updated_at": {
+                          "type": "string",
+                          "additionalProperties": false
+                        },
+                        "id": {
+                          "type": "integer",
+                          "additionalProperties": false
+                        },
+                        "username": {
+                          "type": "string",
+                          "additionalProperties": false
+                        },
+                        "password": {
+                          "type": "string",
+                          "additionalProperties": false
+                        },
+                        "email": {
+                          "type": "string",
+                          "additionalProperties": false
+                        },
+                        "role": {
+                          "type": "string",
+                          "additionalProperties": false
+                        }
+                      },
+                      "required": [
+                        "created_at",
+                        "updated_at",
+                        "id",
+                        "username",
+                        "password",
+                        "email",
+                        "role"
+                      ],
+                      "x-apifox-ignore-properties": [],
+                      "x-apifox-orders": [
+                        "created_at",
+                        "updated_at",
+                        "id",
+                        "username",
+                        "password",
+                        "email",
+                        "role"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "data"
+                  ],
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": [
+                    "code",
+                    "message",
+                    "data"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例（用户已存在）",
+                    "value": {
+                      "code": 400,
+                      "message": "用户已存在"
+                    }
+                  },
+                  "2": {
+                    "summary": "成功示例",
+                    "value": {
+                      "code": 200,
+                      "message": "注册成功",
+                      "data": {
+                        "created_at": "zhMon Aug 28 2023 11:59:31 GMT+0800 (中国标准时间)",
+                        "id": 15,
+                        "username": "wxw4",
+                        "password": "c17d562c1894ff570047c865b5ed16e5",
+                        "email": "112233@qq.com",
+                        "role": "开发者",
+                        "updated_at": "2023-08-28T03:59:31.580Z"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://apifox.com/web/project/3207764/apis/api-105875366-run"
+      }
+    },
+    "/user/login": {
+      "post": {
+        "summary": "login",
+        "x-apifox-folder": "用户模块",
+        "x-apifox-status": "released",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "用户模块"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "example": "123456@qq.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": "112233"
+                  },
+                  "role": {
+                    "type": "string",
+                    "example": "开发者"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "created_at": {
+                          "type": "string"
+                        },
+                        "updated_at": {
+                          "type": "string"
+                        },
+                        "id": {
+                          "type": "integer"
+                        },
+                        "username": {
+                          "type": "string"
+                        },
+                        "email": {
+                          "type": "string"
+                        },
+                        "password": {
+                          "type": "string"
+                        },
+                        "role": {
+                          "type": "string"
+                        },
+                        "deleted_at": {
+                          "type": "null"
+                        }
+                      },
+                      "required": [
+                        "created_at",
+                        "updated_at",
+                        "id",
+                        "username",
+                        "email",
+                        "password",
+                        "role",
+                        "deleted_at"
+                      ],
+                      "x-apifox-ignore-properties": [],
+                      "x-apifox-orders": [
+                        "created_at",
+                        "updated_at",
+                        "id",
+                        "username",
+                        "email",
+                        "password",
+                        "role",
+                        "deleted_at"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "data"
+                  ],
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": [
+                    "code",
+                    "message",
+                    "data"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://apifox.com/web/project/3207764/apis/api-105875398-run"
+      }
+    },
+    "/project/create": {
+      "post": {
+        "summary": "createProject",
+        "x-apifox-folder": "项目模块",
+        "x-apifox-status": "released",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "项目模块"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "HTTP管理1"
+                  },
+                  "description": {
+                    "type": "string",
+                    "example": "byteDance—project"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "created_at": {
+                          "type": "string"
+                        },
+                        "id": {
+                          "type": "integer"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "description": {
+                          "type": "string"
+                        },
+                        "updated_at": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "created_at",
+                        "id",
+                        "name",
+                        "description",
+                        "updated_at"
+                      ],
+                      "x-apifox-ignore-properties": [],
+                      "x-apifox-orders": [
+                        "created_at",
+                        "id",
+                        "name",
+                        "description",
+                        "updated_at"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "data"
+                  ],
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": [
+                    "code",
+                    "message",
+                    "data"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例(项目已存在)",
+                    "value": {
+                      "code": 200,
+                      "message": "项目已存在"
+                    }
+                  },
+                  "2": {
+                    "summary": "成功示例",
+                    "value": {
+                      "code": 200,
+                      "message": "项目创建成功",
+                      "data": {
+                        "created_at": "zhMon Aug 28 2023 12:45:15 GMT+0800 (中国标准时间)",
+                        "id": 7,
+                        "name": "HTTP管理5",
+                        "description": "byteDance—project",
+                        "updated_at": "2023-08-28T04:45:15.174Z"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://apifox.com/web/project/3207764/apis/api-105884650-run"
+      }
+    },
+    "/project/update": {
+      "put": {
+        "summary": "updateProject",
+        "x-apifox-folder": "项目模块",
+        "x-apifox-status": "released",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "项目模块"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "http管理1"
+                  },
+                  "description": {
+                    "type": "string",
+                    "example": "byte"
+                  },
+                  "id": {
+                    "type": "number",
+                    "example": "0"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "created_at": {
+                          "type": "string"
+                        },
+                        "id": {
+                          "type": "integer"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "description": {
+                          "type": "string"
+                        },
+                        "updated_at": {
+                          "type": "string"
+                        },
+                        "deleted_at": {
+                          "type": "null"
+                        }
+                      },
+                      "required": [
+                        "created_at",
+                        "id",
+                        "name",
+                        "description",
+                        "updated_at",
+                        "deleted_at"
+                      ],
+                      "x-apifox-ignore-properties": [],
+                      "x-apifox-orders": [
+                        "created_at",
+                        "id",
+                        "name",
+                        "description",
+                        "updated_at",
+                        "deleted_at"
+                      ]
+                    },
+                    "msg": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "data",
+                    "msg"
+                  ],
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": [
+                    "code",
+                    "data",
+                    "msg"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://apifox.com/web/project/3207764/apis/api-105884974-run"
+      }
+    },
+    "/project/{id}": {
+      "delete": {
+        "summary": "deleteProject",
+        "x-apifox-folder": "项目模块",
+        "x-apifox-status": "released",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "项目模块"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "example": "2",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message"
+                  ],
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": [
+                    "code",
+                    "message"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://apifox.com/web/project/3207764/apis/api-105886751-run"
+      }
+    },
+    "/project": {
+      "get": {
+        "summary": "projectList",
+        "x-apifox-folder": "项目模块",
+        "x-apifox-status": "released",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "项目模块"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "created_at": {
+                            "type": "string"
+                          },
+                          "id": {
+                            "type": "integer"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "description": {
+                            "type": "string"
+                          },
+                          "updated_at": {
+                            "type": "string"
+                          },
+                          "deleted_at": {
+                            "type": "null"
+                          }
+                        },
+                        "required": [
+                          "created_at",
+                          "id",
+                          "name",
+                          "description",
+                          "updated_at",
+                          "deleted_at"
+                        ],
+                        "x-apifox-ignore-properties": [],
+                        "x-apifox-orders": [
+                          "created_at",
+                          "id",
+                          "name",
+                          "description",
+                          "updated_at",
+                          "deleted_at"
+                        ]
+                      }
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "data"
+                  ],
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": [
+                    "code",
+                    "message",
+                    "data"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "code": 200,
+                      "message": "项目列表获取成功",
+                      "data": [
+                        {
+                          "created_at": "zhSun Aug 27 2023 12:07:00 GMT+0800 (中国标准时间)",
+                          "id": 1,
+                          "name": "http管理1",
+                          "description": "bytedance",
+                          "updated_at": "2023-08-27T04:39:01.000Z",
+                          "deleted_at": null
+                        },
+                        {
+                          "created_at": "zhSun Aug 27 2023 12:48:49 GMT+0800 (中国标准时间)",
+                          "id": 3,
+                          "name": "HTTP管理2",
+                          "description": "byteDance—project-8.27",
+                          "updated_at": "2023-08-27T04:48:49.000Z",
+                          "deleted_at": null
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://apifox.com/web/project/3207764/apis/api-105886770-run"
+      }
+    },
+    "/project/member/create": {
+      "post": {
+        "summary": "createProjectUser",
+        "x-apifox-folder": "项目成员模块",
+        "x-apifox-status": "released",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "项目成员模块"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "projectId": {
+                    "type": "number"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "role": {
+                    "type": "string"
+                  },
+                  "username": {
+                    "type": "string",
+                    "example": "qwe1"
+                  }
+                },
+                "required": [
+                  "username"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "created_at": {
+                          "type": "string"
+                        },
+                        "id": {
+                          "type": "integer"
+                        },
+                        "username": {
+                          "type": "string"
+                        },
+                        "email": {
+                          "type": "string"
+                        },
+                        "password": {
+                          "type": "string"
+                        },
+                        "role": {
+                          "type": "string"
+                        },
+                        "updated_at": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "created_at",
+                        "id",
+                        "username",
+                        "email",
+                        "password",
+                        "role",
+                        "updated_at"
+                      ],
+                      "x-apifox-ignore-properties": [],
+                      "x-apifox-orders": [
+                        "created_at",
+                        "id",
+                        "username",
+                        "email",
+                        "password",
+                        "role",
+                        "updated_at"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "data"
+                  ],
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": [
+                    "code",
+                    "message",
+                    "data"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例（成员本身存在，加入项目成员表）",
+                    "value": {
+                      "code": 200,
+                      "message": "该项目成员本身存在数据库，现已将其加入项目，其信息除邮箱号之外，其本身信息保留不变",
+                      "data": {
+                        "created_at": "zhMon Aug 28 2023 19:23:08 GMT+0800 (中国标准时间)",
+                        "id": 17,
+                        "username": "qwe1",
+                        "email": "112233@qq.com",
+                        "password": "992f3c4e7ec9a0e96173284c816612bd",
+                        "role": "测试者",
+                        "updated_at": "2023-08-28T11:23:08.000Z",
+                        "deleted_at": null
+                      }
+                    }
+                  },
+                  "2": {
+                    "summary": "成功示例（成员本身不在数据库中）",
+                    "value": {
+                      "code": 200,
+                      "message": "成员添加成功",
+                      "data": {
+                        "created_at": "zhMon Aug 28 2023 19:25:28 GMT+0800 (中国标准时间)",
+                        "id": 18,
+                        "username": "qwe1",
+                        "email": "112234@qq.com",
+                        "password": "992f3c4e7ec9a0e96173284c816612bd",
+                        "role": "测试者",
+                        "updated_at": "2023-08-28T11:25:28.667Z"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://apifox.com/web/project/3207764/apis/api-105924313-run"
+      }
+    },
+    "/project/member/{id}": {
+      "delete": {
+        "summary": "deleteProjectUser",
+        "x-apifox-folder": "项目成员模块",
+        "x-apifox-status": "released",
+        "deprecated": false,
+        "description": "删除项目成员只是将该成员从项目中移除，但不是删除其账户（数据库中仍存在其记录）",
+        "tags": [
+          "项目成员模块"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "example": "1",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message"
+                  ],
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": [
+                    "code",
+                    "message"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://apifox.com/web/project/3207764/apis/api-105925611-run"
+      }
+    },
+    "/project/member": {
+      "get": {
+        "summary": "projectUserList",
+        "x-apifox-folder": "项目成员模块",
+        "x-apifox-status": "released",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "项目成员模块"
+        ],
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "example": "1",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "created_at": {
+                            "type": "string"
+                          },
+                          "id": {
+                            "type": "integer"
+                          },
+                          "project_id": {
+                            "type": "integer"
+                          },
+                          "user_id": {
+                            "type": "integer"
+                          },
+                          "updated_at": {
+                            "type": "string"
+                          },
+                          "deleted_at": {
+                            "type": "null"
+                          },
+                          "user": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "integer"
+                              },
+                              "username": {
+                                "type": "string"
+                              },
+                              "email": {
+                                "type": "string"
+                              },
+                              "role": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "username",
+                              "email",
+                              "role"
+                            ],
+                            "x-apifox-ignore-properties": [],
+                            "x-apifox-orders": [
+                              "id",
+                              "username",
+                              "email",
+                              "role"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "created_at",
+                          "id",
+                          "project_id",
+                          "user_id",
+                          "updated_at",
+                          "deleted_at",
+                          "user"
+                        ],
+                        "x-apifox-ignore-properties": [],
+                        "x-apifox-orders": [
+                          "created_at",
+                          "id",
+                          "project_id",
+                          "user_id",
+                          "updated_at",
+                          "deleted_at",
+                          "user"
+                        ]
+                      }
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "data"
+                  ],
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": [
+                    "code",
+                    "message",
+                    "data"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例（项目内成员）",
+                    "value": {
+                      "code": 200,
+                      "message": "成员列表获取成功",
+                      "data": [
+                        {
+                          "created_at": "zhSun Aug 27 2023 22:18:32 GMT+0800 (中国标准时间)",
+                          "id": 1,
+                          "project_id": 1,
+                          "user_id": 12,
+                          "updated_at": "2023-08-27T14:18:32.000Z",
+                          "deleted_at": null,
+                          "user": null
+                        },
+                        {
+                          "created_at": "zhSun Aug 27 2023 22:31:49 GMT+0800 (中国标准时间)",
+                          "id": 3,
+                          "project_id": 1,
+                          "user_id": 14,
+                          "updated_at": "2023-08-27T14:31:49.000Z",
+                          "deleted_at": null,
+                          "user": {
+                            "id": 14,
+                            "username": "qwe1",
+                            "email": "123456@qq.com",
+                            "role": "开发者"
+                          }
+                        },
+                        {
+                          "created_at": "zhMon Aug 28 2023 19:23:08 GMT+0800 (中国标准时间)",
+                          "id": 4,
+                          "project_id": 1,
+                          "user_id": 17,
+                          "updated_at": "2023-08-28T11:23:08.000Z",
+                          "deleted_at": null,
+                          "user": {
+                            "id": 17,
+                            "username": "qwe1",
+                            "email": "112233@qq.com",
+                            "role": "测试者"
+                          }
+                        },
+                        {
+                          "created_at": "zhMon Aug 28 2023 19:23:59 GMT+0800 (中国标准时间)",
+                          "id": 5,
+                          "project_id": 1,
+                          "user_id": 17,
+                          "updated_at": "2023-08-28T11:23:59.000Z",
+                          "deleted_at": null,
+                          "user": {
+                            "id": 17,
+                            "username": "qwe1",
+                            "email": "112233@qq.com",
+                            "role": "测试者"
+                          }
+                        },
+                        {
+                          "created_at": "zhMon Aug 28 2023 19:25:28 GMT+0800 (中国标准时间)",
+                          "id": 6,
+                          "project_id": 1,
+                          "user_id": 18,
+                          "updated_at": "2023-08-28T11:25:28.000Z",
+                          "deleted_at": null,
+                          "user": {
+                            "id": 18,
+                            "username": "qwe1",
+                            "email": "112234@qq.com",
+                            "role": "测试者"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://apifox.com/web/project/3207764/apis/api-105926115-run"
+      }
+    },
+    "/interface/create": {
+      "post": {
+        "summary": "createInterface",
+        "x-apifox-folder": "接口模块",
+        "x-apifox-status": "released",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "接口模块"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "projectId": {
+                    "type": "integer"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "url": {
+                    "type": "string"
+                  },
+                  "method": {
+                    "type": "string"
+                  },
+                  "request_params": {
+                    "type": "object",
+                    "properties": {
+                      "username": {
+                        "type": "string"
+                      },
+                      "password": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "username",
+                      "password"
+                    ],
+                    "x-apifox-orders": [
+                      "username",
+                      "password"
+                    ],
+                    "x-apifox-ignore-properties": []
+                  },
+                  "response_data": {
+                    "type": "object",
+                    "properties": {
+                      "msg": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "msg"
+                    ],
+                    "x-apifox-orders": [
+                      "msg"
+                    ],
+                    "x-apifox-ignore-properties": []
+                  },
+                  "description": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "projectId",
+                  "name",
+                  "description",
+                  "url",
+                  "method",
+                  "request_params",
+                  "response_data"
+                ],
+                "x-apifox-orders": [
+                  "projectId",
+                  "name",
+                  "url",
+                  "method",
+                  "request_params",
+                  "response_data",
+                  "description"
+                ],
+                "x-apifox-ignore-properties": []
+              },
+              "example": {
+                "projectId": 1,
+                "name": "login",
+                "description": "登录",
+                "url": "/login",
+                "method": "get",
+                "request_params": {
+                  "username": "wxw",
+                  "password": "123456"
+                },
+                "response_data": {
+                  "msg": "success"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "created_at": {
+                          "type": "string"
+                        },
+                        "id": {
+                          "type": "integer"
+                        },
+                        "project_id": {
+                          "type": "integer"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "description": {
+                          "type": "string"
+                        },
+                        "url": {
+                          "type": "string"
+                        },
+                        "method": {
+                          "type": "string"
+                        },
+                        "request_params": {
+                          "type": "object",
+                          "properties": {
+                            "username": {
+                              "type": "string"
+                            },
+                            "password": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "username",
+                            "password"
+                          ],
+                          "x-apifox-ignore-properties": [],
+                          "x-apifox-orders": [
+                            "username",
+                            "password"
+                          ]
+                        },
+                        "response_data": {
+                          "type": "object",
+                          "properties": {
+                            "msg": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "msg"
+                          ],
+                          "x-apifox-ignore-properties": [],
+                          "x-apifox-orders": [
+                            "msg"
+                          ]
+                        },
+                        "updated_at": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "created_at",
+                        "id",
+                        "project_id",
+                        "name",
+                        "description",
+                        "url",
+                        "method",
+                        "request_params",
+                        "response_data",
+                        "updated_at"
+                      ],
+                      "x-apifox-ignore-properties": [],
+                      "x-apifox-orders": [
+                        "created_at",
+                        "id",
+                        "project_id",
+                        "name",
+                        "description",
+                        "url",
+                        "method",
+                        "request_params",
+                        "response_data",
+                        "updated_at"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "data"
+                  ],
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": [
+                    "code",
+                    "message",
+                    "data"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "code": 200,
+                      "message": "接口添加成功",
+                      "data": {
+                        "created_at": "zhMon Aug 28 2023 00:13:24 GMT+0800 (中国标准时间)",
+                        "id": 6,
+                        "project_id": 1,
+                        "name": "login",
+                        "description": "登录",
+                        "url": "/login",
+                        "method": "get",
+                        "request_params": {
+                          "username": "wxw",
+                          "password": "123456"
+                        },
+                        "response_data": {
+                          "msg": "success"
+                        },
+                        "updated_at": "2023-08-27T16:13:24.681Z"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://apifox.com/web/project/3207764/apis/api-105929942-run"
+      }
+    },
+    "/interface": {
+      "delete": {
+        "summary": "deleteInterface",
+        "x-apifox-folder": "接口模块",
+        "x-apifox-status": "released",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "接口模块"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "example": "11",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "version",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "example": "1.0.2",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://apifox.com/web/project/3207764/apis/api-105932265-run"
+      },
+      "get": {
+        "summary": "interfaceList",
+        "x-apifox-folder": "接口模块",
+        "x-apifox-status": "released",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "接口模块"
+        ],
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "example": "1",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "created_at": {
+                            "type": "string"
+                          },
+                          "id": {
+                            "type": "integer"
+                          },
+                          "project_id": {
+                            "type": "integer"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "description": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "url": {
+                            "type": "string"
+                          },
+                          "method": {
+                            "type": "string"
+                          },
+                          "request_params": {
+                            "type": "object",
+                            "properties": {
+                              "req": {
+                                "type": "string"
+                              },
+                              "password": {
+                                "type": "string"
+                              },
+                              "username": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "password",
+                              "username"
+                            ],
+                            "x-apifox-ignore-properties": [],
+                            "x-apifox-orders": [
+                              "req",
+                              "password",
+                              "username"
+                            ]
+                          },
+                          "response_data": {
+                            "type": "object",
+                            "properties": {
+                              "msg": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "msg"
+                            ],
+                            "x-apifox-ignore-properties": [],
+                            "x-apifox-orders": [
+                              "msg"
+                            ]
+                          },
+                          "updated_at": {
+                            "type": "string"
+                          },
+                          "deleted_at": {
+                            "type": "null"
+                          }
+                        },
+                        "required": [
+                          "created_at",
+                          "id",
+                          "project_id",
+                          "name",
+                          "description",
+                          "url",
+                          "method",
+                          "request_params",
+                          "response_data",
+                          "updated_at",
+                          "deleted_at"
+                        ],
+                        "x-apifox-ignore-properties": [],
+                        "x-apifox-orders": [
+                          "created_at",
+                          "id",
+                          "project_id",
+                          "name",
+                          "description",
+                          "url",
+                          "method",
+                          "request_params",
+                          "response_data",
+                          "updated_at",
+                          "deleted_at"
+                        ]
+                      }
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "data"
+                  ],
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": [
+                    "code",
+                    "message",
+                    "data"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "code": 200,
+                      "message": "接口列表获取成功",
+                      "data": [
+                        {
+                          "created_at": "zhSun Aug 27 2023 23:53:38 GMT+0800 (中国标准时间)",
+                          "id": 1,
+                          "project_id": 1,
+                          "name": "register",
+                          "description": null,
+                          "url": "/register",
+                          "method": "post",
+                          "request_params": null,
+                          "response_data": null,
+                          "updated_at": "2023-08-27T15:53:38.000Z",
+                          "deleted_at": null
+                        },
+                        {
+                          "created_at": "zhSun Aug 27 2023 23:57:59 GMT+0800 (中国标准时间)",
+                          "id": 2,
+                          "project_id": 1,
+                          "name": "login",
+                          "description": null,
+                          "url": "/login",
+                          "method": "get",
+                          "request_params": null,
+                          "response_data": null,
+                          "updated_at": "2023-08-27T15:57:59.000Z",
+                          "deleted_at": null
+                        },
+                        {
+                          "created_at": "zhSun Aug 27 2023 23:58:59 GMT+0800 (中国标准时间)",
+                          "id": 3,
+                          "project_id": 1,
+                          "name": "login",
+                          "description": null,
+                          "url": "/login",
+                          "method": "get",
+                          "request_params": null,
+                          "response_data": null,
+                          "updated_at": "2023-08-27T15:58:59.000Z",
+                          "deleted_at": null
+                        },
+                        {
+                          "created_at": "zhMon Aug 28 2023 00:07:33 GMT+0800 (中国标准时间)",
+                          "id": 4,
+                          "project_id": 1,
+                          "name": "复道六院克",
+                          "description": "次委已类连业区且府眼八格带三值石林后。位常包同与究者毛也况来族。办龙族当究党将照型总八行发往也。求织发她包响美头解率设装处石济般。",
+                          "url": "http://gilqawu.mx/xgnbgx",
+                          "method": "quis dolor Ut ullamco",
+                          "request_params": {
+                            "req": "update"
+                          },
+                          "response_data": {
+                            "msg": "success"
+                          },
+                          "updated_at": "2023-08-27T16:36:39.000Z",
+                          "deleted_at": null
+                        },
+                        {
+                          "created_at": "zhMon Aug 28 2023 00:13:24 GMT+0800 (中国标准时间)",
+                          "id": 6,
+                          "project_id": 1,
+                          "name": "login",
+                          "description": "登录",
+                          "url": "/login",
+                          "method": "get",
+                          "request_params": {
+                            "password": "123456",
+                            "username": "wxw"
+                          },
+                          "response_data": {
+                            "msg": "success"
+                          },
+                          "updated_at": "2023-08-27T16:13:24.000Z",
+                          "deleted_at": null
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://apifox.com/web/project/3207764/apis/api-105933909-run"
+      }
+    },
+    "/interface/update": {
+      "put": {
+        "summary": "updateInterface",
+        "x-apifox-folder": "接口模块",
+        "x-apifox-status": "released",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "接口模块"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  },
+                  "projectId": {
+                    "type": "integer"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "url": {
+                    "type": "string"
+                  },
+                  "method": {
+                    "type": "string"
+                  },
+                  "request_params": {
+                    "type": "object",
+                    "properties": {},
+                    "x-apifox-orders": [],
+                    "x-apifox-ignore-properties": []
+                  },
+                  "response_data": {
+                    "type": "object",
+                    "properties": {},
+                    "x-apifox-orders": [],
+                    "x-apifox-ignore-properties": []
+                  },
+                  "version": {
+                    "type": "string",
+                    "description": "接口版本号"
+                  }
+                },
+                "required": [
+                  "version",
+                  "id",
+                  "projectId",
+                  "name",
+                  "description",
+                  "url",
+                  "method",
+                  "request_params",
+                  "response_data"
+                ],
+                "x-apifox-orders": [
+                  "id",
+                  "projectId",
+                  "name",
+                  "description",
+                  "url",
+                  "method",
+                  "request_params",
+                  "response_data",
+                  "version"
+                ],
+                "x-apifox-ignore-properties": []
+              },
+              "example": {
+                "version": "1.0.0",
+                "id": 13,
+                "projectId": 2,
+                "name": "后习先无知",
+                "description": "入感战度只观据少入亲习你究间支命。华提人土声应手合步基六型拉界太许开合。价接包存口正领直须性没响。干构两以领术九常之权发存接间。",
+                "url": "http://hujh.aw/jhplglc",
+                "method": "est culpa",
+                "request_params": {},
+                "response_data": {}
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "created_at": {
+                          "type": "string"
+                        },
+                        "id": {
+                          "type": "integer"
+                        },
+                        "project_id": {
+                          "type": "integer"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "description": {
+                          "type": "string"
+                        },
+                        "url": {
+                          "type": "string"
+                        },
+                        "method": {
+                          "type": "string"
+                        },
+                        "request_params": {
+                          "type": "object",
+                          "properties": {},
+                          "x-apifox-ignore-properties": [],
+                          "x-apifox-orders": []
+                        },
+                        "response_data": {
+                          "type": "object",
+                          "properties": {},
+                          "x-apifox-ignore-properties": [],
+                          "x-apifox-orders": []
+                        },
+                        "updated_at": {
+                          "type": "string"
+                        },
+                        "deleted_at": {
+                          "type": "null"
+                        }
+                      },
+                      "required": [
+                        "created_at",
+                        "id",
+                        "project_id",
+                        "name",
+                        "description",
+                        "url",
+                        "method",
+                        "request_params",
+                        "response_data",
+                        "updated_at",
+                        "deleted_at"
+                      ],
+                      "x-apifox-ignore-properties": [],
+                      "x-apifox-orders": [
+                        "created_at",
+                        "id",
+                        "project_id",
+                        "name",
+                        "description",
+                        "url",
+                        "method",
+                        "request_params",
+                        "response_data",
+                        "updated_at",
+                        "deleted_at"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "data"
+                  ],
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": [
+                    "code",
+                    "message",
+                    "data"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "code": 200,
+                      "message": "接口更新成功",
+                      "data": {
+                        "created_at": "zhMon Aug 28 2023 00:07:33 GMT+0800 (中国标准时间)",
+                        "id": 4,
+                        "project_id": 1,
+                        "name": "复道六院克",
+                        "description": "次委已类连业区且府眼八格带三值石林后。位常包同与究者毛也况来族。办龙族当究党将照型总八行发往也。求织发她包响美头解率设装处石济般。",
+                        "url": "http://gilqawu.mx/xgnbgx",
+                        "method": "quis dolor Ut ullamco",
+                        "request_params": {
+                          "req": "update"
+                        },
+                        "response_data": {
+                          "msg": "success"
+                        },
+                        "updated_at": "2023-08-27T16:42:31.120Z",
+                        "deleted_at": null
+                      }
+                    }
+                  },
+                  "2": {
+                    "summary": "成功示例",
+                    "value": {
+                      "code": 200,
+                      "message": "接口更新成功,更新日志已添加",
+                      "data": {
+                        "created_at": "zhMon Aug 28 2023 21:13:27 GMT+0800 (中国标准时间)",
+                        "id": 13,
+                        "project_id": 2,
+                        "name": "后习先无知",
+                        "description": "入感战度只观据少入亲习你究间支命。华提人土声应手合步基六型拉界太许开合。价接包存口正领直须性没响。干构两以领术九常之权发存接间。",
+                        "url": "http://hujh.aw/jhplglc",
+                        "method": "est culpa",
+                        "request_params": {},
+                        "response_data": {},
+                        "updated_at": "2023-08-28T13:22:07.877Z",
+                        "deleted_at": null
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://apifox.com/web/project/3207764/apis/api-105932463-run"
+      }
+    },
+    "/interface/version/{projectId}": {
+      "get": {
+        "summary": "interfaceVersion",
+        "x-apifox-folder": "接口版本管理模块",
+        "x-apifox-status": "released",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "接口版本管理模块"
+        ],
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "example": "2",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "created_at": {
+                            "type": "string"
+                          },
+                          "id": {
+                            "type": "integer"
+                          },
+                          "interface_id": {
+                            "type": "integer"
+                          },
+                          "version": {
+                            "type": "string"
+                          },
+                          "log": {
+                            "type": "null"
+                          },
+                          "updated_at": {
+                            "type": "string"
+                          },
+                          "deleted_at": {
+                            "type": "null"
+                          }
+                        },
+                        "required": [
+                          "created_at",
+                          "id",
+                          "interface_id",
+                          "version",
+                          "log",
+                          "updated_at",
+                          "deleted_at"
+                        ],
+                        "x-apifox-ignore-properties": [],
+                        "x-apifox-orders": [
+                          "created_at",
+                          "id",
+                          "interface_id",
+                          "version",
+                          "log",
+                          "updated_at",
+                          "deleted_at"
+                        ]
+                      }
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "data"
+                  ],
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": [
+                    "code",
+                    "message",
+                    "data"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "code": 200,
+                      "message": "项目的接口版本记录查找成功",
+                      "data": [
+                        {
+                          "created_at": "zhMon Aug 28 2023 19:32:56 GMT+0800 (中国标准时间)",
+                          "id": 1,
+                          "interface_id": 7,
+                          "version": "1.0.0",
+                          "log": null,
+                          "updated_at": "2023-08-28T11:32:56.000Z",
+                          "deleted_at": null
+                        },
+                        {
+                          "created_at": "zhMon Aug 28 2023 19:33:42 GMT+0800 (中国标准时间)",
+                          "id": 2,
+                          "interface_id": 8,
+                          "version": "1.0.0",
+                          "log": null,
+                          "updated_at": "2023-08-28T11:33:42.000Z",
+                          "deleted_at": null
+                        },
+                        {
+                          "created_at": "zhMon Aug 28 2023 19:33:50 GMT+0800 (中国标准时间)",
+                          "id": 3,
+                          "interface_id": 9,
+                          "version": "1.0.0",
+                          "log": null,
+                          "updated_at": "2023-08-28T11:33:50.000Z",
+                          "deleted_at": null
+                        },
+                        {
+                          "created_at": "zhMon Aug 28 2023 19:34:00 GMT+0800 (中国标准时间)",
+                          "id": 4,
+                          "interface_id": 10,
+                          "version": "1.0.0",
+                          "log": null,
+                          "updated_at": "2023-08-28T11:34:00.000Z",
+                          "deleted_at": null
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://apifox.com/web/project/3207764/apis/api-105933994-run"
+      }
+    },
+    "/user/{userId}": {
+      "delete": {
+        "summary": "userLoginOut",
+        "x-apifox-folder": "用户模块",
+        "x-apifox-status": "released",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "用户模块"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "example": "12",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://apifox.com/web/project/3207764/apis/api-106043447-run"
+      }
+    },
+    "/project/user/{userId}": {
+      "get": {
+        "summary": "findProjectsByUserId",
+        "x-apifox-folder": "项目模块",
+        "x-apifox-status": "released",
+        "deprecated": false,
+        "description": "通过当前用户，查找该用户所拥有的项目，若用户无项目，则前端项目列表为空。即用户打开软件登录成功后的界面需要用到的数据。",
+        "tags": [
+          "项目模块"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "example": "12",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "created_at": {
+                            "type": "string"
+                          },
+                          "id": {
+                            "type": "integer"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "description": {
+                            "type": "string"
+                          },
+                          "updated_at": {
+                            "type": "string"
+                          },
+                          "deleted_at": {
+                            "type": "null"
+                          }
+                        },
+                        "x-apifox-ignore-properties": [],
+                        "x-apifox-orders": [
+                          "created_at",
+                          "id",
+                          "name",
+                          "description",
+                          "updated_at",
+                          "deleted_at"
+                        ]
+                      }
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "data"
+                  ],
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": [
+                    "code",
+                    "message",
+                    "data"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "code": 200,
+                      "message": "用户的项目查找成功",
+                      "data": [
+                        {
+                          "created_at": "zhSun Aug 27 2023 12:07:00 GMT+0800 (中国标准时间)",
+                          "id": 1,
+                          "name": "http管理1",
+                          "description": "bytedance",
+                          "updated_at": "2023-08-27T04:39:01.000Z",
+                          "deleted_at": null
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://apifox.com/web/project/3207764/apis/api-106221358-run"
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Tag": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "minimum": 1,
+            "description": "标签ID编号"
+          },
+          "name": {
+            "type": "string",
+            "description": "标签名称"
+          }
+        },
+        "xml": {
+          "name": "Tag"
+        },
+        "x-apifox-orders": [
+          "id",
+          "name"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": ""
+      },
+      "Category": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "minimum": 1,
+            "description": "分组ID编号"
+          },
+          "name": {
+            "type": "string",
+            "description": "分组名称"
+          }
+        },
+        "xml": {
+          "name": "Category"
+        },
+        "x-apifox-orders": [
+          "id",
+          "name"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": ""
+      },
+      "Pet": {
+        "required": [
+          "name",
+          "photoUrls",
+          "id",
+          "category",
+          "tags",
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "minimum": 1,
+            "description": "宠物ID编号"
+          },
+          "category": {
+            "$ref": "#/components/schemas/Category",
+            "description": "分组"
+          },
+          "name": {
+            "type": "string",
+            "description": "名称",
+            "examples": [
+              "doggie"
+            ]
+          },
+          "photoUrls": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "照片URL"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Tag"
+            },
+            "description": "标签"
+          },
+          "status": {
+            "type": "string",
+            "description": "宠物销售状态",
+            "enum": [
+              "available",
+              "pending",
+              "sold"
+            ]
+          }
+        },
+        "x-apifox-orders": [
+          "id",
+          "category",
+          "name",
+          "photoUrls",
+          "tags",
+          "status"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": ""
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "http://127.0.0.1:7001",
+      "description": "开发环境"
+    }
+  ]
+}
