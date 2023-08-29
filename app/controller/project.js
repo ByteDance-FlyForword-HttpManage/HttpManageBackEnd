@@ -7,7 +7,7 @@ class ProjectController extends Controller {
   // 增添项目
   async create() {
     const { ctx } = this;
-    const { name, description } = ctx.request.body;
+    const { userId,name, description } = ctx.request.body;
     const inspectProject = await ctx.model.Project.findOne({
       where: {
         name,
@@ -25,13 +25,18 @@ class ProjectController extends Controller {
       name,
       description,
     });
-
+    // 添加用户管理项目
+    await ctx.model.ProjectUser.create({
+      project_id: project.id,
+      user_id: userId,
+    });
     ctx.body = {
       code: 200,
-      message: "项目创建成功",
+      message: "项目创建成功,且该项目属于当前用户（即项目成员表增添记录）",
       data: project,
     };
   }
+
 
   // 更改项目
   async update() {
@@ -68,9 +73,29 @@ class ProjectController extends Controller {
         id,
       },
     });
+    await ctx.model.ProjectUser.destroy({
+      where: {
+        project_id: id,
+      },
+    });
+    // 获取项目的所有接口ID
+    const interfaces = await ctx.model.Interface.findAll({
+      where: {
+        project_id: id,
+      },
+    });
+    // 获取接口ID列表
+    const interfaceIds = interfaces.map((interfaceItem) => interfaceItem.id);
+    // 通过接口ID查找删除接口版本记录
+    await ctx.model.InterfaceVersion.destroy({
+      where: {
+        interface_id: interfaceIds,
+      },
+    });
+
     ctx.body = {
       code: 200,
-      message: "项目删除成功",
+      message: "项目删除成功（项目删除+项目成员移除+项目接口删除+项目接口版本管理删除）",
     };
   }
 

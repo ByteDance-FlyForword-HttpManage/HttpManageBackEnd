@@ -4,7 +4,6 @@
 const { Controller } = require("egg");
 const md5 = require("md5");
 
-
 class UserController extends Controller {
   // 注册接口
   async register() {
